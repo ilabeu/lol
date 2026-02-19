@@ -10,7 +10,7 @@ public class ElytraFlyGrim extends Module {
     private double horizontalSpeed = 0;
 
     public ElytraFlyGrim() {
-        super(Categories.Movement, "elytra-fly-grim", "Bypass de velocidade para o GrimV3.");
+        super(Categories.Movement, "elytra-fly-grim", "Bypass de momentum para GrimV3.");
     }
 
     @Override
@@ -20,7 +20,10 @@ public class ElytraFlyGrim extends Module {
 
     @EventHandler
     private void onTick(TickEvent.Post event) {
-        if (mc.player == null || !mc.player.isFallFlying()) {
+        if (mc.player == null) return;
+        
+        // Verificação compatível com 1.20.1
+        if (!mc.player.isFallFlying()) {
             horizontalSpeed = 0;
             return;
         }
