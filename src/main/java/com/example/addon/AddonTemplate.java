@@ -2,33 +2,28 @@ package com.example.addon;
 
 import com.example.addon.commands.CommandExample;
 import com.example.addon.hud.HudExample;
-import com.example.addon.modules.ModuleExample;
-import com.mojang.logging.LogUtils;
-import meteordevelopment.meteorclient.addons.GithubRepo;
+import com.example.addon.modules.ElytraFlyGrim;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
-import meteordevelopment.meteorclient.commands.Commands;
+import meteordevelopment.meteorclient.systems.commands.Commands;
 import meteordevelopment.meteorclient.systems.hud.Hud;
-import meteordevelopment.meteorclient.systems.hud.HudGroup;
-import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
+import meteordevelopment.meteorclient.systems.modules.Category;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AddonTemplate extends MeteorAddon {
-    public static final Logger LOG = LogUtils.getLogger();
-    public static final Category CATEGORY = new Category("Example");
-    public static final HudGroup HUD_GROUP = new HudGroup("Example");
+    public static final Logger LOG = LoggerFactory.getLogger("AddonTemplate");
+    public static final Category CATEGORY = new Category("Ilabeu Hax");
 
     @Override
     public void onInitialize() {
-        LOG.info("Initializing Meteor Addon Template");
+        LOG.info("Inicializando Ilabeu Hax Addon...");
 
-        // Modules
-        Modules.get().add(new ModuleExample());
+        // Registra o seu novo módulo de Elytra para o GrimV3
+        Modules.get().add(new ElytraFlyGrim());
 
-        // Commands
-        Commands.add(new CommandExample());
-
-        // HUD
+        // Registra comandos e HUD (opcional, se você manteve os exemplos)
+        Commands.get().add(new CommandExample());
         Hud.get().register(HudExample.INFO);
     }
 
@@ -40,10 +35,5 @@ public class AddonTemplate extends MeteorAddon {
     @Override
     public String getPackage() {
         return "com.example.addon";
-    }
-
-    @Override
-    public GithubRepo getRepo() {
-        return new GithubRepo("MeteorDevelopment", "meteor-addon-template");
     }
 }
