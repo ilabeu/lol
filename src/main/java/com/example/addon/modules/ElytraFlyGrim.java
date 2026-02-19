@@ -1,4 +1,4 @@
-package com.example.addon.modules;
+package com.ilabeu.modules;
 
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -10,7 +10,7 @@ public class ElytraFlyGrim extends Module {
     private double horizontalSpeed = 0;
 
     public ElytraFlyGrim() {
-        super(Categories.Movement, "elytra-fly-grim", "Mantém velocidade de queda sem rubberband.");
+        super(Categories.Movement, "elytra-fly-grim", "Bypass de velocidade para o GrimV3.");
     }
 
     @Override
@@ -28,18 +28,14 @@ public class ElytraFlyGrim extends Module {
         Vec3d vel = mc.player.getVelocity();
         double currentSpeed = Math.sqrt(vel.x * vel.x + vel.z * vel.z);
 
-        // Se estivermos rápido, salvamos essa velocidade "buffer"
         if (currentSpeed > 0.5) {
             horizontalSpeed = currentSpeed;
         }
 
-        // Se temos uma velocidade salva, reaplicamos para não perder momentum
         if (horizontalSpeed > 0) {
             double yaw = Math.toRadians(mc.player.getYaw());
             double moveX = -Math.sin(yaw) * horizontalSpeed;
             double moveZ = Math.cos(yaw) * horizontalSpeed;
-
-            // Mantemos a gravidade vanilla (vel.y) para o Grim não detectar NoGravity
             mc.player.setVelocity(moveX, vel.y, moveZ);
         }
     }
