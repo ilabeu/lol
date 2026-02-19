@@ -1,36 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
-  "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
-  "authors": [
-    "seasnail"
-  ],
-  "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
-  },
-  "icon": "assets/template/icon.png",
+  "id": "ilabeuhax",
+  "version": "0.1.0",
+  "name": "Ilabeu Hax",
+  "description": "Addon para Meteor Client.",
+  "authors": ["ilabeu"],
+  "license": "MIT",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.ilabeu.addon.AddonTemplate"
     ]
   },
-  "mixins": [
-    "addon-template.mixins.json"
-  ],
-  "custom": {
-    "meteor-client:color": "225,25,25",
-    "modmenu": {
-      "parent": {
-        "id": "meteor-client"
-      }
-    }
-  },
   "depends": {
-    "java": ">=21",
-    "minecraft": ["${mc_version}"],
-    "meteor-client": "*"
+    "fabricloader": ">=0.14.12",
+    "minecraft": "~1.20.1"
   }
 }
